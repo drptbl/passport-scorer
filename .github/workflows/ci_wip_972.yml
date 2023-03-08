@@ -1,15 +1,7 @@
 name: CI - WIP for 972
 
 on:
-  workflow_dispatch:
-    inputs:
-      commit:
-        description: "Commit ref"
-        required: true
-        type: string
-
   push:
-    branches: [972-implement-blocknative]
 
 jobs:
   cypress-test:
@@ -63,8 +55,6 @@ jobs:
         env:
           NEXT_PUBLIC_PASSPORT_SCORER_ALCHEMY_API_KEY: ${{ secrets.NEXT_PUBLIC_PASSPORT_SCORER_ALCHEMY_API_KEY }}
           config: "baseUrl=http://localhost:8000"
-          # pass the Cypress Cloud record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISPLAY: :0.0
